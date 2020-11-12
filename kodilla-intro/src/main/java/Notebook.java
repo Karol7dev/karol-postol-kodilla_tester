@@ -7,6 +7,7 @@ public class Notebook {
         this.price = price;
         this.year = year;
     }
+
     public void checkPrice() {
         if (this.price < 600) {
             System.out.println("This laptop is very cheap.");
@@ -16,6 +17,7 @@ public class Notebook {
             System.out.println("This notebook is expensive");
         }
     }
+
     public void checkWeight() {
         if (this.weight < 600) {
             System.out.println("Light");
@@ -25,6 +27,7 @@ public class Notebook {
             System.out.println("Very heavy");
         }
     }
+
     public void checkYear() {
         if (this.price <= 1000 && this.year <= 2014) {
             System.out.println("This laptop is old generation!");
