@@ -1,12 +1,13 @@
 public class Grades {
     public static void main(String[] args) {
         Grades grades = new Grades();
-        grades.add(4);
-        grades.add(5);
-        grades.add(9);
+        grades.add(2);
+        grades.add(2);
+        grades.add(2);
 
         System.out.println(grades.size);
         System.out.println(grades.lastValues());
+        System.out.println("lista" + grades.grades[0]);
         System.out.println(grades.sumGrades(grades.grades));
 
     }
@@ -15,7 +16,7 @@ public class Grades {
     private int size;
 
     public Grades() {
-        this.grades = new int[10];
+        this.grades = new int[3];
         this.size = 0;
     }
 
@@ -32,11 +33,13 @@ public class Grades {
         return result;
     }
 
-    public int sumGrades(int[] grades) {
+    public double sumGrades(int[] grades) {
         int result = 0;
         for (int i = 0; i < grades.length; i++) {
             result = result + grades[i];
         }
+        System.out.println("rezultat"+result);
+        System.out.println("rezultat"+grades.length);
         return result / grades.length;
     }
 }
