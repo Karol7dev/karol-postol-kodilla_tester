@@ -35,7 +35,7 @@ public class Kolory {
         } catch (ClassCastException e) {
             System.out.println(e.getMessage());
         }
-        String Kolory = scanner.nextLine().trim().toUpperCase(); TUTAJ COS NIE GRA?
+        String Kolory = scanner.nextLine().trim().toUpperCase(); //TUTAJ COS NIE GRA?
         return Kolory;
     }
 }
