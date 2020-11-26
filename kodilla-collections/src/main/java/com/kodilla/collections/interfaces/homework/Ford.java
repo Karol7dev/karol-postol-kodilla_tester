@@ -12,7 +12,7 @@ public class Ford implements Car {
     }
 
     public void increaseSpeed() {
-        this.speed = speed + 30;
+        this.speed = speed + 50;
     }
 
     public void decreaseSpeed() {

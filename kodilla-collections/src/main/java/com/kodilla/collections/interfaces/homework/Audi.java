@@ -12,7 +12,7 @@ public class Audi implements Car {
     }
 
     public void increaseSpeed() {
-        this.speed = speed + 60;
+        this.speed = speed + 70;
     }
 
     public void decreaseSpeed() {

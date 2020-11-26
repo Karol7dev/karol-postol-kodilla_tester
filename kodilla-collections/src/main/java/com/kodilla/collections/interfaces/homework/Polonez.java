@@ -13,7 +13,7 @@ public class Polonez implements Car {
     }
 
     public void increaseSpeed() {
-        this.speed = speed + 20;
+        this.speed = speed + 40;
     }
 
     public void decreaseSpeed() {
