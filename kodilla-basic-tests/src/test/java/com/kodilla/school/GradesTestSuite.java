@@ -1,21 +1,29 @@
 package com.kodilla.school;
 
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class GradesTestSuite {
+    static Grades grades;
+
+    @BeforeEach
+    public void createGrades() {
+        grades = new Grades();
+    }
 
     @Test
     public void shouldHaveZeroLength() {
-        Grades grades = new Grades();
+//        Grades grades = new Grades();
         int[] values = grades.getValues();
         assertEquals(0, values.length);
     }
 
     @Test
     public void shouldAddTwoElementsToArray() {
-        Grades grades = new Grades();
+//        Grades grades = new Grades();
         grades.add(4);
         grades.add(2);
 
@@ -27,7 +35,7 @@ public class GradesTestSuite {
 
     @Test
     public void shouldCalculateAverage() {
-        Grades grades = new Grades();
+//        Grades grades = new Grades();
         grades.add(4);
         grades.add(2);
         grades.add(5);
@@ -37,7 +45,7 @@ public class GradesTestSuite {
 
     @Test
     public void shouldReturnAverageEqualsZeroIsArrayIsEmpty() {
-        Grades grades = new Grades();
+//        Grades grades = new Grades();
         assertEquals(0, grades.getAverage(), 0.0001);
     }
 }

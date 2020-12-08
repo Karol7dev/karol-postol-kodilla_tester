@@ -6,6 +6,12 @@ public class Polonez implements Car {
 
     private int speed;
     private int maxSpeed = 140;
+    private String carName = "Polonez";
+
+    @Override
+    public String getCarName() {
+        return carName;
+    }
 
     @Override
     public int getSpeed() {

@@ -7,4 +7,5 @@ public interface Car {
     void decreaseSpeed();
     int getMaxSpeed();
     void setSpeed(int speed);
+    String getCarName();
 }

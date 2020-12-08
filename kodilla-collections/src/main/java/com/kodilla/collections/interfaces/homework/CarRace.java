@@ -20,6 +20,6 @@ public class CarRace {
         car.decreaseSpeed();
         car.decreaseSpeed();
 
-        System.out.println(car.getSpeed());
+        System.out.println(car.getCarName() + " " +car.getSpeed());
     }
 }

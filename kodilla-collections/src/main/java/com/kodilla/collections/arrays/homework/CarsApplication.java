@@ -39,6 +39,5 @@ public class CarsApplication {
             polonez.setSpeed(assignedSpeed);
             return polonez;
         }
-
     }
 }

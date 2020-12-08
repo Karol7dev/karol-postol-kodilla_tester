@@ -5,6 +5,12 @@ import java.util.Objects;
 public class Audi implements Car {
     private int speed;
     private int maxSpeed = 240;
+    private String carName = "Audi";
+
+    @Override
+    public String getCarName() {
+        return carName;
+    }
 
     @Override
     public int getSpeed() {
