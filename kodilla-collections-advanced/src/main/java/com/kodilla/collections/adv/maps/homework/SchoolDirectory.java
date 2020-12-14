@@ -10,6 +10,7 @@ public class SchoolDirectory {
 
         School birkbeck = new School("Birkbeck University London", 120,160,350,180,200, 320, 200,180 );
         School lse = new School("London School of Economics and Political Studies", 200,280,350,300,220,80);
+        System.out.println(birkbeck);
 
         Principal birkbeckPrincipal = new Principal("Ian Harrison");
         Principal lsePrincipal = new Principal("Dame Nemat Shafik");
