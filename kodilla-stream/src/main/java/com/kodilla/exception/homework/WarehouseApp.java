@@ -1,7 +1,7 @@
 package com.kodilla.exception.homework;
 
 public class WarehouseApp {
-    public static void main(String[] args) throws OrderDoesntExistException {
+    public static void main(String[] args) throws Exception {
         Order order1 = new Order("B-512");
         Order order2 = new Order("B-514");
         Order order3 = new Order("B-516");

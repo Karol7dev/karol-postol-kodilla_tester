@@ -15,17 +15,16 @@ public class Application {
         Student student3 = new Student("Laura Greene", teacher1);
         Student student4 = new Student("Michael Jackson", null);
 
-        List<Student> students = new ArrayList<>() {{    //Czemu podwójne???
-                add(student1);
-                add(student2);
-                add(student3);
-                add(student4);
-        }};
+        List<Student> students = new ArrayList<>();
+                students.add(student1);
+                students.add(student2);
+                students.add(student3);
+                students.add(student4);
 
         for (Student student: students) {
-            Optional<Teacher> optionalTeacher = Optional.ofNullable(student.getTeacher());
-            String teacherName = optionalTeacher.orElse(new Teacher("<undefined>")).getName();
-            System.out.println("student: " + student.getName() +" , teacher: " + teacherName);
+//            Optional<Teacher> optionalTeacher = Optional.ofNullable(student.getTeacher());
+//            String teacherName = optionalTeacher.orElse(new Teacher("<undefined>")).getName();
+            System.out.println("student: " + student.getName() +" , teacher: " + student.getTeacher().getName());
         }
     }
 }
