@@ -1,14 +1,15 @@
 package com.kodilla.spring.basic.dependecy_injection.homework;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 public class ShippingCenter {
 
+    @Autowired
     private DeliveryService deliveryService;
+
+    @Autowired
     private NotificationService notificationService;
 
-    public ShippingCenter(DeliveryService deliveryService, NotificationService notificationService) {
-        this.deliveryService = deliveryService;
-        this.notificationService = notificationService;
-    }
 
     public void sendPackage(String address, double weight) {
         if (deliveryService.deliverPackage(address, weight)) {
@@ -16,5 +17,10 @@ public class ShippingCenter {
         } else {
             notificationService.fail(address);
         }
+    }
+
+    public static void main(String[] args) {
+        ShippingCenter shippingCenter = new ShippingCenter();
+        shippingCenter.sendPackage("Cokolwiek", 20.2);
     }
 }
