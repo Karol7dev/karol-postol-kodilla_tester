@@ -2,6 +2,7 @@ package com.kodilla.spring.basic.spring_configuration;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.NoUniqueBeanDefinitionException;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -15,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class AnimalFactoryTestSuite {
 
     @Test
-    public void testDogCreated() {
+    public void testDogCreated() throws NoUniqueBeanDefinitionException {
         ApplicationContext context = new AnnotationConfigApplicationContext("com.kodilla.spring");
         Dog dog = context.getBean(Dog.class);
         String voice = dog.getVoice();

@@ -14,7 +14,7 @@ class CarFactoryTestSuite {
 
     @Test
     public void shouldReturnCorrectCarWithCorrectLightSetDependingOnCurrentSeason(){
-        ApplicationContext context = new AnnotationConfigApplicationContext("com.kodilla.spring");
+        ApplicationContext context = new AnnotationConfigApplicationContext("com.kodilla.spring.basic.spring_configuration");
         String season = SeasonsSelector.getSeason(LocalDate.now());
         int hour = LocalTime.now().getHour();
 

@@ -1,10 +1,13 @@
 package com.kodilla.spring.basic.spring_configuration.homework;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Scope;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+@Configuration
 public class CarFactory {
 
     @Bean

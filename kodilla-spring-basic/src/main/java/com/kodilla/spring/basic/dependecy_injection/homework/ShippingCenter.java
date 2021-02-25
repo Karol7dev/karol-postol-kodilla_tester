@@ -4,10 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 public class ShippingCenter {
 
-    @Autowired
     private DeliveryService deliveryService;
 
-    @Autowired
     private NotificationService notificationService;
 
 
