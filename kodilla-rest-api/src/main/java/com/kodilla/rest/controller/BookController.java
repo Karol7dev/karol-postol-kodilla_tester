@@ -19,10 +19,16 @@ class BookController {
     }
 
     @GetMapping
-    public List<BookDto> getBooks() { return new ArrayList<>(); }
+    public List<BookDto> getBooks() { return bookService.getBooks(); }
 
     @PostMapping
     public void addBook(@RequestBody BookDto bookDto) {
         bookService.addBook(bookDto);
     }
+
+//    @GetMapping
+//    public List<String> getBooks() {
+//        List<String> lista = new ArrayList<>();
+//        lista.add("karol");
+//        return lista; }
 }

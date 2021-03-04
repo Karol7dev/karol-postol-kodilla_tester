@@ -31,7 +31,7 @@ class BookControllerTest {
     }
 
     @Test
-    public void shoudlAddBook() {
+    public void shouldAddBook() {
         // given
         BookService bookServiceMock = Mockito.mock(BookService.class);
         BookController bookController = new BookController(bookServiceMock);
