@@ -1,26 +1,22 @@
 package com.kodilla.exception.homework;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Warehouse {
+    private Set<Order> orders;
 
-    private List<Order> orders = new ArrayList<>();
+    public Warehouse() {
+        orders = new HashSet<>();
+    }
 
-    public void addOrder( Order order) {
+    public void addOrder(Order order) {
         orders.add(order);
     }
 
-    public Order getOrder(String number) throws Exception {
-         return orders.stream()
-                .filter(o -> o.getNumber().equals(number))
-                .findAny()
-                 .orElseThrow(() -> new Exception("My exception"));
-//                .orElseThrow(OrderDoesntExistException::new);
-//        return order;
-    }
-
-    public int ordersCount() {
-        return this.orders.size();
+    public Order getOrder(String number) throws OrderDoesntExistException {
+        return orders.stream()
+                .filter(order -> order.getNumber().equals(number)).findFirst()
+                .orElseThrow(OrderDoesntExistException::new);
     }
 }

@@ -1,32 +1,19 @@
 package com.kodilla.exception.homework;
 
 public class WarehouseApp {
-    public static void main(String[] args) throws Exception {
-        Order order1 = new Order("B-512");
-        Order order2 = new Order("B-514");
-        Order order3 = new Order("B-516");
-        Order order4 = new Order("B-518");
-
+    public static void main(String[] args) {
         Warehouse warehouse = new Warehouse();
-        warehouse.addOrder(order1);
-        warehouse.addOrder(order2);
-        warehouse.addOrder(order3);
-        warehouse.addOrder(order4);
+        warehouse.addOrder(new Order("1234"));
+        warehouse.addOrder(new Order("1236"));
+        warehouse.addOrder(new Order("1235"));
 
-        String findOrderNumber = "B-516";
         try {
-            Order requiredOrder = warehouse.getOrder(findOrderNumber);
-            System.out.println("Order " + findOrderNumber + " exist.");
+            System.out.println(warehouse.getOrder("1234"));
+            System.out.println("Znaleziono zamowienie po numerze 1234");
         } catch (OrderDoesntExistException e) {
-            System.out.println("Sorry, order " + findOrderNumber + " doesnt exists.");
-        }
-
-        findOrderNumber = "C-512";
-        try {
-            Order requiredOrder = warehouse.getOrder(findOrderNumber);
-            System.out.println("Order "+ findOrderNumber +" exists");
-        } catch (OrderDoesntExistException e){
-            System.out.println("Sorry but order " + findOrderNumber +  " does not exists.");
+            System.out.println("Nie znaleziono zamowienia po numerze 1234");
+//            e.printStackTrace();
         }
     }
+
 }
