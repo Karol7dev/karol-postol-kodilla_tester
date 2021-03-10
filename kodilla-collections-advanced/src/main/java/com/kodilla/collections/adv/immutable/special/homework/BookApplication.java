@@ -1,31 +1,52 @@
 package com.kodilla.collections.adv.immutable.special.homework;
 
+import java.util.*;
+
 public class BookApplication {
     public static void main(String[] args) {
+
+        // Basic list with some titles
+        List<Book> books = new ArrayList<>();
+        books.add(new Book("Ogniem i mieczem", "H S"));
+        books.add(new Book("Pan Tadeusz", "A M"));
+        books.add(new Book("Czerwony Kapturek", "B G"));
+        books.add(new Book("Lalka", "B P"));
+
+        // Cast
         BookManager bookManager = new BookManager();
+        Book b1 = bookManager.createBook("Kamienie na szaniec", "A K");
+        Book b2 = bookManager.createBook("Czerwony Kapturek", "B G");
+        Book b3 = bookManager.createBook("Lalka", "B P");
+        Book b4 = bookManager.createBook("Czerwony Kapturek", "B G");
 
-        Book book1 = bookManager.createBook("The Shining", "Zdewen King");
-        Book book2 = bookManager.createBook("Mistery", "Stephen King");
-        Book book3 = bookManager.createBook("Carrie", "Stephen king");
-        Book book4 = bookManager.createBook("Carrie", "Stephen king");
-        Book book5 = bookManager.createBook("The Shining", "Sthepen King");
+        books.add(b1);
+        books.add(b2);
+        books.add(b3);
+        books.add(b4);
 
-        for (Book book : bookManager.getBooks()) {
-            System.out.println(book1 == book);
+
+        if (b1 == b2) {
+            System.out.println("b1 ma ten sam adres co b2");
+        } else {
+            System.out.println("b1 ma inny adres niz b2");
         }
 
-//        System.out.println(book1 == book2);
-//        System.out.println(book1 == book3);
-//        System.out.println(book1 == book4);
-//        System.out.println(book1 == book5);
-//
-//        System.out.println(book2 == book3);
-//        System.out.println(book2 == book4);
-//        System.out.println(book2 == book5);
-//
-//        System.out.println(book3 == book4);
-//        System.out.println(book3 == book5);
-//
-//        System.out.println(book4 == book5);
+        if (b1 == b3) {
+            System.out.println("b1 ma ten sam adres co b3");
+        } else {
+            System.out.println("b1 ma inny adres niz b3");
+        }
+
+        System.out.println("----Next part----");
+        System.out.println(books.size());
+        for(Book bf : books)
+            System.out.println(bf.getAuthor() + " - " + bf.getTitle());
+    }
+
+    private static void printBooks(List<Book> books) {
+        System.out.println(books.size());
+        for (Book book : books) {
+            System.out.println(book);
+        }
     }
 }
