@@ -2,65 +2,96 @@ package com.kodilla.bank.homework;
 
 public class Bank {
 
-    private CashMachine[] cashMachines;
-    private int cashMachinesCount = 0;
+    private String name;
+    private CashMachine[] cashMachines = new CashMachine[2]; // tablica bankomatow
 
-    public Bank() {
-        this.cashMachines = new CashMachine[0];
+    public Bank(String name) {
+        this.name = name; // nazwa bankomatu
+        this.cashMachines[0] = new CashMachine(); // bankomat 1
+        this.cashMachines[1] = new CashMachine();  // bankomat 2
+
     }
 
-    public void setCashMachines(CashMachine cashMachines) {
-        CashMachine[] _tempCashMachines = new CashMachine[this.cashMachines.length + 1];
-        System.arraycopy(this.cashMachines,0 , _tempCashMachines, 0, this.cashMachines.length);
-        _tempCashMachines[this.cashMachines.length] = cashMachines;
-        this.cashMachines = _tempCashMachines;
-    }
-
-    public int getCashMachinesNumber() {
-        return this.cashMachines.length;
-    }
-
-    public int getBalanceOfAllCashMachines() {
-        int sum = 0;
-        for (CashMachine cm : this.cashMachines) {
-            sum += cm.getBalance();
+    public int getCashAmount() {
+        int amount = 0; // calkowity bilans
+        for(int i =0; i < cashMachines.length; i++) {
+            CashMachine cashMachine = cashMachines[i];
+            for (int j = 0; j < cashMachine.getValues().length; j++) {
+                amount = amount + cashMachine.getValues()[j];
+            }
         }
-        return sum;
+        return amount;
+
     }
 
-    public int getNumberOfAllWithdrawTransactions(){
-        int sum = 0;
-        for(CashMachine cm : this.cashMachines){
-            sum += cm.getNumberOfWithdrawTransactions();
+    public int getNumberOfWithdrawOperations() { // liczbę transakcji związanych z wypłatą,
+        int withdrawNumber = 0;
+        for(int i =0; i < cashMachines.length; i++) {
+            CashMachine cashMachine = cashMachines[i];
+            for (int j = 0; j < cashMachine.getValues().length; j++) {
+                if(cashMachine.getValues()[j]<0) {
+                    withdrawNumber = withdrawNumber + 1;
+                }
+            }
         }
-        return sum;
+        return withdrawNumber;
+
     }
 
-    public int getNumberOfAllPayInTransactions(){
-        int sum = 0;
-        for(CashMachine cm : this.cashMachines){
-            sum += cm.getNumberOfPayInTransactions();
+    public int getNumberOfDepositOperations() {
+        int depositNumber = 0; // liczbę transakcji związaną z wpłatą pieniędzy,
+        for(int i =0; i < cashMachines.length; i++) {
+            CashMachine cashMachine = cashMachines[i];
+            for (int j = 0; j < cashMachine.getValues().length; j++) {
+                if(cashMachine.getValues()[j]>0) {
+                    depositNumber = depositNumber + 1;
+                }
+            }
         }
-        return sum;
+        return depositNumber;
     }
 
-    public double getAverageWithdrawValueForAllCashMachines(){
-        double sumFromTransactions = 0;
-        int numberOfTransactions = 0;
-        for(CashMachine cm : this.cashMachines){
-            sumFromTransactions += cm.getSumOfAllWithdraws();
-            numberOfTransactions += cm.getNumberOfWithdrawTransactions();
+    public double getAverageAmountWithdrawOperations() { // średnią wartość wypłaty,
+        double withdraw = 0;
+        double withdrawNumber = 0;
+        for(int i =0; i < cashMachines.length; i++) {
+            CashMachine cashMachine = cashMachines[i];
+            for (int j = 0; j < cashMachine.getValues().length; j++) {
+                if(cashMachine.getValues()[j]<0) {
+                    withdraw = withdraw + cashMachine.getValues()[j];
+                    withdrawNumber = withdrawNumber + 1;
+                }
+            }
         }
-        return sumFromTransactions / numberOfTransactions;
+        return withdraw / withdrawNumber;
+
+    }
+    public double getAverageAmountDepositOperations() { // średnią wartość wpłaty.
+        double deposit = 0;
+        double depositeNumber = 0;
+        for(int i =0; i < cashMachines.length; i++) {
+            CashMachine cashMachine = cashMachines[i];
+            for (int j = 0; j < cashMachine.getValues().length; j++) {
+                if(cashMachine.getValues()[j]>0) {
+                    deposit = deposit + cashMachine.getValues()[j];
+                    depositeNumber = depositeNumber + 1;
+                }
+            }
+        }
+        return deposit/ depositeNumber;
+
     }
 
-    public double getAveragePayInValueForAllCashMachines(){
-        double sumFromTransactions = 0;
-        int numberOfTransactions = 0;
-        for(CashMachine cm : this.cashMachines){
-            sumFromTransactions += cm.getSumOfAllPayIn();
-            numberOfTransactions += cm.getNumberOfPayInTransactions();
+
+    public void addDepositCashMachine(int operation, int cashMachineNumber) { // Transakcja wplaty
+        if (operation > 0 && operation < 200) {
+            this.cashMachines[cashMachineNumber].add(operation);
         }
-        return sumFromTransactions / numberOfTransactions;
+    }
+
+    public void addWithdrawCashMachine(int operation, int cashMachineNumber) { // Transakcja wyplaty
+        if ( operation > -200 && operation < 0) {
+            this.cashMachines[cashMachineNumber].add(operation);
+        }
     }
 }

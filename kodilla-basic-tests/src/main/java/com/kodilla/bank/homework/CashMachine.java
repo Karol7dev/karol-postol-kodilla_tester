@@ -1,114 +1,47 @@
 package com.kodilla.bank.homework;
 
-public class CashMachine {
+public class CashMachine { // Ma zawierac liste transakcji
 
+    private int[] values; // Deklaracja tablicy
+    private int size;
 
-    private int[] transactions;
-    private int transactionsCounter;
-    private int balance;
-
-    private int maxWithdrawAmount = -300;
-    private int maxPayInAmount = 1000;
-
-
-    public CashMachine(int openingBalance) {
-        this.balance = openingBalance;
-        this.transactions = new int[0];
-        this.transactionsCounter = 0;
+    public CashMachine() {
+        this.size = 0;
+        this.values = new int[0]; // Tabela na poczatku przyjmuje wartosc 0- brak operacji
     }
 
-    public double getBalance() {
-        return this.balance;
+    public void add(int value) { // Metoda dodajaca nowe wartosci do tabeli i zwiekszajaca jej rozmiar
+
+        // wymagany warunek dla akceptacji tranzakcji w zaleznosi od dostepnych srodkow w bankomacie
+
+        this.size++;
+        int[] newTab = new int[this.size];
+        System.arraycopy(values, 0, newTab, 0, values.length); // Metoda pozwala na skopiowanie tablicy zrodlowej do tablicy docelowej,
+        newTab[this.size - 1] = value; // W kolejnej linii przypisujemy nową wartość do ostatniego elementu w tablicy (konieczne było odjęcie cyfry jeden od rozmiaru tablicy, indeksy liczymy od zera)
+        this.values = newTab; // Ostatnia linia to przypisanie nowo utworzonej tablicy do tablicy przechowywanej w klasie.
     }
 
-    //dodanie transakcji
-    //warunki: wielokrotnosc 10, inne od 0, ><
+    public int[] getValues() { // metoda zwracajaca dlugosc tabeli
+        return values;
+    } // Metoda zwraca wartosci wpisane do tabeli
 
-    public boolean transaction(int amount) {
-        if (amount < this.maxWithdrawAmount || amount > this.maxPayInAmount || amount == 0 || amount % 10 != 0)
-            return false;
-        else if (amount < 0)
-            if (this.balance < Math.abs(amount))
-                return false;
 
-        this.transactionsCounter++;
-        int[] _tmpTransactions = new int[this.transactionsCounter];
-        System.arraycopy(transactions, 0, _tmpTransactions, 0, transactions.length);
-        _tmpTransactions[this.transactionsCounter - 1] = amount;
-        this.transactions = _tmpTransactions;
-        this.balance += amount;
+    public double getCashAmount() { // Dodalismy metoda zwracajaca wartosc na jaka przeprowadzono transakcje
+        double cashAmount =0;
 
-        return true;
-    }
-
-    public int[] getTransactions() {
-        return this.transactions;
-    }
-
-    public int getNumberOfPayInTransactions() {
-        int counter = 0;
-        for (int t : transactions) {
-            if (t > 0) {
-                counter++;
-            }
+        for(int i = 0; i < this.values.length; i++) {
+            cashAmount += this.values[i];
         }
-        return counter;
-    }
+        return cashAmount;
 
-    public int getNumberOfWithdrawTransactions() {
-        int counter = 0;
-        for (int t : transactions) {
-            if (t < 0) {
-                counter++;
-            }
-        }
-        return counter;
     }
-
-    public double getAveragePayInValue() {
-        double payInSum = 0;
-        int count = 0;
-        for (int t : transactions) {
-            if (t > 0) {
-                payInSum += t;
-                count++;
-            }
-        }
-        return payInSum / count;
-    }
-
-    public double getAverageWithdrawValue() {
-        if (this.transactions.length == 0)
+    public double getAvarage() { // dodalismy metoda zwracajaca srednia wartosc transakcji
+        if (this.values.length == 0) {  // test nie zadzialal ze wzgledu na niedozwolone dzielenie przez 0
             return 0;
-        double withdrawSum = 0;
-        int count = 0;
-        for (int t : transactions) {
-            if (t < 0) {
-                withdrawSum += Math.abs(t);
-                count++;
-            }
         }
-        return withdrawSum / count;
-    }
+
+        return getCashAmount()/this.values.length;
 
 
-    public int getSumOfAllWithdraws() {
-        int sum = 0;
-        for (int t : this.transactions) {
-            if (t < 0) {
-                sum += Math.abs(t);
-            }
-        }
-        return sum;
-    }
-
-    public int getSumOfAllPayIn() {
-        int sum = 0;
-        for (int t : this.transactions) {
-            if (t > 0) {
-                sum += Math.abs(t);
-            }
-        }
-        return sum;
     }
 }

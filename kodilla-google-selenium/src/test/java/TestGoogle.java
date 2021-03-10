@@ -8,7 +8,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import pages.GoogleResults;
 import pages.GoogleSearch;
 
-import static pages.GoogleSearch.loadResults;
 
 public class TestGoogle {
 
@@ -16,7 +15,7 @@ public class TestGoogle {
 
     @Before
     public void testSetup() {
-        System.setProperty("webdriver.chrome.driver", "C:\\kodilla-course\\kodilla-google-selenium\\src\\main\\java\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
         driver = new ChromeDriver();
         driver.navigate().to("http://www.google.com");
     }
@@ -35,6 +34,6 @@ public class TestGoogle {
     @Test
     public void homework() {
         GoogleSearch googleSearch = new GoogleSearch(driver);
-        googleSearch.search
+
     }
 }
