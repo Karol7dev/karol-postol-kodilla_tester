@@ -4,19 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FlightRepository {
-    private List<Flight> flights = new ArrayList<>();
 
-    public FlightRepository() {
-        this.flights.add(new Flight("Warszawa","Wrocław"));
-        this.flights.add(new Flight("London","Praga"));
-        this.flights.add(new Flight("Ryga","Montreal"));
-        this.flights.add(new Flight("New York","Paris"));
-        this.flights.add(new Flight("Tokyo","Singapur"));
-    }
-
-    public List<Flight> getFlights() {
+    public static List<Flight> getFlightsTable() {
+        List<Flight> flights = new ArrayList<>();
+        flights.add(new Flight("Berlin", "Barcelona"));
+        flights.add(new Flight("Barcelona", "Singapur"));
+        flights.add(new Flight("Sarajewo", "Warszawa"));
+        flights.add(new Flight("Warszawa", "Singapur"));
+        flights.add(new Flight("Odessa", "Bruksela"));
+        flights.add(new Flight("Bruksela", "Warszawa"));
+        flights.add(new Flight("Warszawa", "Londyn"));
+        flights.add(new Flight("Warszawa", "Barcelona"));
         return flights;
     }
-
-
 }

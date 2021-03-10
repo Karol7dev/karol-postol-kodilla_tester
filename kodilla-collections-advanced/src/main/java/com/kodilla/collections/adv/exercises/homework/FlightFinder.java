@@ -5,19 +5,26 @@ import java.util.List;
 
 public class FlightFinder {
 
+    // Wywolanie metody
+    List<Flight> flights = FlightRepository.getFlightsTable();
+
     public List<Flight> findFlightsFrom(String departure) {
-        List<Flight> tempList = new ArrayList<>();
-        FlightRepository flightRepository = new FlightRepository();
-        for (Flight flight : flightRepository.getFlights())
-            if (flight.getDeparture() == departure) tempList.add(flight);
-        return tempList;
+        List<Flight> flightFrom = new ArrayList<>();
+        for (Flight flight : flights) {
+            if (flight.getDeparture().equals(departure)) {
+                flightFrom.add(flight);
+            }
+        }
+        return flightFrom;
     }
 
     public List<Flight> findFlightsTo(String arrival) {
-        List<Flight> tempList = new ArrayList<>();
-        FlightRepository flightRepository = new FlightRepository();
-        for (Flight flight : flightRepository.getFlights())
-            if (flight.getArrival() == arrival) tempList.add(flight);
-        return tempList;
+        List<Flight> flightTo = new ArrayList<>();
+        for (Flight flight : flights) {
+            if (flight.getArrival().equals(arrival)) {
+                flightTo.add(flight);
+            }
+        }
+        return flightTo;
     }
 }
