@@ -1,4 +1,4 @@
-package seasonchecker.is_it_summer;
+package seasonchecker;
 
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
